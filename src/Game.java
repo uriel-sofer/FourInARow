@@ -34,6 +34,15 @@ public class Game {
         numToWin = getWinningLineLength(scanner, Math.min(cols, rows));
     }
 
+    public Game(int mode, int rows, int cols, int winLength, String player1Name, String player2Name) {
+        grid = new Grid(rows, cols);
+        numToWin = winLength;
+
+        players[0] = new HumanPlayer('X', this, player1Name);
+        players[1] = (mode == 3) ? new HumanPlayer('O', this, player2Name) : new SmartMachinePlayer('O', this);
+        currentPlayer = players[0];
+    }
+
     /**
      * Creates a costume 4-in-a-row Game object
      * @param option Game mode option from the main menu:

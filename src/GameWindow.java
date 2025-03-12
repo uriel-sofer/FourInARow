@@ -1,21 +1,15 @@
 import javax.swing.*;
 
-public class GameWindow {
+public class GameWindow extends JFrame {
     public GameWindow() {
-        JFrame frame = new JFrame("4 in a Row");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+        setTitle("4 in a Row");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setSize(600, 600);
 
-        Game game = new Game(3); // Start a Player-vs-Player game
-        GamePanel panel = new GamePanel(game);
-        frame.add(panel);
-        frame.pack();
 
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new GameWindow();
+        setContentPane(new GameMenu(this));
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 }
